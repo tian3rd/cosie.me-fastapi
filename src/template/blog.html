@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block styles %}
+<link rel="stylesheet" href="/static/css/utils.module.css" />
+{% endblock %} {% block content %}
+<article>
+  <h1>{{ post.title }}</h1>
+  <p>By {{ post.author }} on {{ post.date.strftime('%B %d, %Y') }}</p>
+
+  <div class="tags">
+    {% for tag in post.tags %}
+    <span class="tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+
+  <div class="post-body">{{ post.body }}</div>
+</article>
+{% endblock %}

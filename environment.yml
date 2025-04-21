@@ -1,0 +1,16 @@
+name: fastapi-cosie
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pip
+  - python=3.12
+  - pip:
+      - duckdb
+      - fastapi
+      - httpie
+      - httpx
+      - jinja2
+      - pytest
+      - requests
+      - uvicorn

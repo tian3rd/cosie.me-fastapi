@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Cosie & I{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/global.css" />
+    <link rel="stylesheet" href="/static/css/utils.module.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+    {% block styles %}{% endblock %}
+  </head>
+  <body>
+    <header>
+      <!-- if it's in a blog page, e.g, /blog/<blog-id>, show a smaller profile picture, and no title -->
+      <div class="center-container">
+        {% if request.url.path.startswith('/blog/') %}
+        <img src="/static/images/profile.webp" alt="profile" width="64" />
+        {% else %}
+        <img src="/static/images/profile.webp" alt="profile" width="123" />
+        <h1 class="heading2Xl"><a href="/">Cosie & I</a></h1>
+        {% endif %}
+      </div>
+      <!-- if request.url.path is top level or root, e.g, /, /blog, /about, /contact, show the nav -->
+      {% if request.url.path in ['/', '/blog', '/about', '/contact'] %}
+      <nav>
+        <ul>
+          <li><a href="/">🏚️</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/">|🚧WIP→</a></li>
+          <li><a href="/cosie">🐾</a></li>
+          <li><a href="/about">Contact</a></li>
+        </ul>
+      </nav>
+      <!-- add a divider -->
+      <hr />
+      {% endif %}
+    </header>
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer>
+      <p>&copy; 2025 Cosie & I. All rights reserved.</p>
+    </footer>
+
+    {% block scripts %}{% endblock %}
+  </body>
+</html>
