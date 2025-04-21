@@ -31,9 +31,9 @@ cosie_age_str = f"{cosie_age_in_month // 12} years and {cosie_age_in_month % 12}
 def root(request: Request):
     self_introduction = dedent(
         f"""
-        Greetings 👋🐾 (also from my good boy Cosie/Zz, {cosie_age_str} old).
-        He loves hiking as much as I do 🥾 (he enjoys the bush capital!)
-        We are an army of two, building a better world, one line of code at a time / one bark at a time.
+        Greetings 👋👋🐾 (also from cool Ellen 😎 and handsome Cosie/Zz, {cosie_age_str} old).
+        Ellen, Cosie and I all love hiking 🥾 (yes, we enjoy the bush capital!)
+        We are an army of three, building a better world, one line of code at a time / one bark at a time.
         """
     )
 
@@ -49,7 +49,9 @@ def say_hi():
 
 @app.get("/hi/{name}")
 def say_hi_to(name: str):
-    return {"message": f"Hello, {name}!"}
+    if name.lower() == "ellen":
+        return "Hi Ellen, I'm your boyfriend Phillip! Shall we play some tennis?"
+    return "Hi, {name}"
 
 
 if __name__ == "__main__":
