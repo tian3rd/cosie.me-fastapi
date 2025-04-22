@@ -1,6 +1,9 @@
 {% extends "base.html" %} {% block content %}
 <div class="home">
-  <p>{{ self_introduction }}</p>
+  <!-- <p>{{ self_introduction }}</p> -->
+  {% for line in self_introduction.split('\n') %}
+  <p>{{ line }}</p>
+  {% endfor %}
 </div>
 {% endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/home.module.css" />
