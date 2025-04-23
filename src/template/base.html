@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="font-sans antialiased">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,43 +9,51 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png" />
+    <!-- https://tailwindcss.com/docs/installation/play-cdn: not for production, but should be good for a small site. -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/static/css/global.css" />
-    <link rel="stylesheet" href="/static/css/utils.module.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" />
     {% block styles %}{% endblock %}
   </head>
   <body>
     <header>
       <!-- if it's in a blog page, e.g, /blog/<blog-id>, show a smaller profile picture, and no title -->
-      <div class="center-container">
+      <div class="grid place-items-center mt-4 mb-2">
         {% if request.url.path.startswith('/blog/') %}
-        <img src="/static/images/profile.webp" alt="profile" width="64" />
+        <img src="/static/images/profile.webp" alt="profile" width="64" class="rounded-md border border-gray-200" />
         {% else %}
-        <img src="/static/images/profile.webp" alt="profile" width="123" />
-        <h1 class="heading2Xl"><a href="/">Cosie & Ellen & Phillip</a></h1>
+        <img src="/static/images/profile.webp" alt="profile" width="123" class="rounded-md border border-gray-200" />
+        <h1 class="text-4xl leading-10 font-extrabold tracking-tight mt-4">
+          <a href="/" class="text-black">Cosie & Ellen & Phillip</a>
+        </h1>
         {% endif %}
       </div>
       <!-- if request.url.path is top level or root, e.g, /, /blog, /about, /contact, show the nav -->
-      {% if request.url.path in ['/', '/blog', '/about', '/contact'] %}
-      <nav>
-        <ul>
-          <li><a href="/">🏚️</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/">|🚧WIP→</a></li>
-          <li><a href="/cosie">🐾</a></li>
-          <li><a href="/about">Contact</a></li>
-        </ul>
-      </nav>
-      <!-- add a divider -->
-      <hr />
+      <div class="max-w-3xl mx-auto px-4 mt-4 font-semibold">
+        {% if request.url.path in ['/', '/blog', '/about', '/contact'] %}
+        <nav>
+          <ul>
+            <li><a href="/">🏚️Home</a></li>
+            <li><a href="/blog">📇Blog</a></li>
+            <li><a href="/">🚧WIP→</a></li>
+            <li><a href="/cosie">🐾Cosie</a></li>
+            <li><a href="/about">🃏Contact</a></li>
+          </ul>
+        </nav>
+        <!-- add a divider, same -->
+        <hr class="border-t border-gray-200 my-2" />
+      </div>
       {% endif %}
     </header>
 
     <main>{% block content %}{% endblock %}</main>
 
-    <footer>
-      <p>&copy; 2025 Cosie & Ellen & Phillip. All rights reserved.</p>
-    </footer>
+    <div class="max-w-3xl mx-auto px-4 mt-4 font-mono text-gray-600 text-sm">
+      <hr class="border-t border-gray-200 my-2" />
+      <footer>
+        <p>&copy; 2025 Cosie & Ellen & Phillip.</p>
+      </footer>
+    </div>
 
     {% block scripts %}{% endblock %}
   </body>
