@@ -30,12 +30,12 @@
 
 @media (max-width: 768px) {
   .orbit-circle {
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
   }
 
   .orbit-circle img {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
   }
 }
