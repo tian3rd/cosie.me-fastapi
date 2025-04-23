@@ -16,6 +16,8 @@
     {% block styles %}{% endblock %}
   </head>
   <body>
+    <!-- if it's not contact page, show the header -->
+    {% if not request.url.path.startswith('/contact') %}
     <header>
       <!-- if it's in a blog page, e.g, /blog/<blog-id>, show a smaller profile picture, and no title -->
       <div class="grid place-items-center mt-4 mb-2">
@@ -37,7 +39,7 @@
             <li><a href="/blog">📇Blog</a></li>
             <li><a href="/wip">🚧WIP</a></li>
             <li><a href="/cosie">🐾Cosie</a></li>
-            <li><a href="/about">🃏Contact</a></li>
+            <li><a href="/contact">🃏Contact</a></li>
           </ul>
         </nav>
         <!-- add a divider, same -->
@@ -45,6 +47,7 @@
       </div>
       {% endif %}
     </header>
+    {% endif %}
 
     <main>{% block content %}{% endblock %}</main>
 
