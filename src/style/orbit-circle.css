@@ -33,4 +33,9 @@
     width: 60px;
     height: 60px;
   }
+
+  .orbit-circle img {
+    width: 36px;
+    height: 36px;
+  }
 }
