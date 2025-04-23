@@ -8,6 +8,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from src.web.blog import router as blog_router
+from src.web.wip import router as wip_router
 
 app = FastAPI()
 
@@ -20,8 +21,12 @@ app.mount("/static/images", StaticFiles(directory=top / "src" / "image"), name="
 app.mount(
     "/static/favicon", StaticFiles(directory=top / "src" / "image" / "favicon.ico"), name="static"
 )
+app.mount(
+    "/static/animation", StaticFiles(directory=top / "src" / "style" / "animation"), name="static"
+)
 
 app.include_router(blog_router)
+app.include_router(wip_router)
 
 
 def get_cosie_age() -> str:

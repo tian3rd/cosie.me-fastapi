@@ -4,4 +4,61 @@
   <p>{{ line }}</p>
   {% endfor %}
 </div>
+
+<div class="w-full flex items-center justify-center relative overflow-hidden">
+  <!-- Dotted grid background -->
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <svg width="100%" height="100%" class="w-full h-full">
+      <defs>
+        <pattern id="dots" x="0" y="0" width="64" height="64" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="1" fill="#e5e7eb" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#dots)" />
+    </svg>
+  </div>
+  <div
+    id="orbit-center"
+    class="relative z-10 mx-auto flex items-center justify-center mb-10 mt-10"
+    style="width: 85vw; height: 85vw; max-width: 520px; max-height: 520px"
+  >
+    <!-- Concentric circles -->
+    <svg viewBox="0 0 520 520" class="absolute left-0 top-0 w-full h-full z-5">
+      <circle cx="260" cy="260" r="230" fill="none" stroke="#f3f4f6" stroke-width="2" />
+      <circle cx="260" cy="260" r="170" fill="none" stroke="#f3f4f6" stroke-width="2" />
+      <circle cx="260" cy="260" r="110" fill="none" stroke="#f3f4f6" stroke-width="2" />
+    </svg>
+    <!-- Orbiting icons -->
+    {% set icons = [ { 'name':'fastapi', 'label':'FastAPI',
+    'href':'https://cdn.jsdelivr.net/npm/simple-icons@14.12.3/icons/fastapi.svg' }, { 'name':'pytorch',
+    'label':'PyTorch', 'href':'https://cdn.jsdelivr.net/npm/simple-icons@14.12.3/icons/pytorch.svg' }, {
+    'name':'duckdb','label':'DuckDB', 'href':'https://cdn.jsdelivr.net/npm/simple-icons@14.12.3/icons/duckdb.svg' }, {
+    'name':'react', 'label':'React', 'href':'https://cdn.jsdelivr.net/npm/simple-icons@14.12.3/icons/react.svg' }, {
+    'name':'aws', 'label':'AWS', 'href':'https://cdn.jsdelivr.net/npm/simple-icons@14.12.3/icons/icloud.svg' }, {
+    'name':'python', 'label':'Python', 'href':'https://cdn.jsdelivr.net/npm/simple-icons@14.12.3/icons/python.svg' }, {
+    'name': 'linux', 'label':'Linux', 'href':'https://cdn.jsdelivr.net/npm/simple-icons@14.12.3/icons/linux.svg' }] %}
+    {% for icon in icons %}
+    <a
+      class="orbit-circle absolute"
+      id="circle-{{loop.index}}"
+      href="/wip/{{icon.name}}"
+      style="width: 80px; height: 80px; top: 50%; left: 50%; transform: translate(-50%, -50%)"
+      data-label="{{icon.label}}"
+    >
+      <div
+        class="rounded-full shadow-lg bg-white flex items-center justify-center w-full h-full border border-gray-100 hover:shadow-2xl transition-shadow duration-150 cursor-pointer"
+      >
+        <img src="{{icon.href}}" alt="{{icon.label}}" class="w-12 h-12 object-contain" />
+      </div>
+      <span
+        class="orbit-label invisible opacity-0 absolute bg-gray-900 text-white text-xs rounded px-2 py-1 pointer-events-none whitespace-nowrap left-1/2 top-0 -translate-x-1/2 -translate-y-full shadow-lg transition-all duration-200"
+        >{{icon.label}}</span
+      >
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %} {% block styles %}
+<script src="/static/animation/orbit.js"></script>
+<link rel="stylesheet" href="/static/css/orbit-circle.css" />
 {% endblock %}
