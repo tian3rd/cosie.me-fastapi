@@ -1,0 +1,36 @@
+/* Orbit circle layout (each icon) */
+.orbit-circle {
+  transition: box-shadow 0.2s, filter 0.2s;
+  box-shadow: none;
+}
+
+.orbit-circle:hover {
+  z-index: 11;
+  box-shadow: none;
+  filter: brightness(1.08);
+  border-bottom: none; /* remove the global border-bottom */
+}
+
+/* Orbit label (tooltip) */
+.orbit-circle:hover .orbit-label {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, -120%) scale(1.04);
+  transition-delay: 0.12s;
+}
+
+.orbit-label {
+  transition: all 0.18s cubic-bezier(0.25, 1, 0.5, 1);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 40;
+  transform: translate(-50%, -100%) scale(0.99);
+}
+
+@media (max-width: 768px) {
+  .orbit-circle {
+    width: 60px;
+    height: 60px;
+  }
+}
