@@ -9,6 +9,7 @@ from fastapi.templating import Jinja2Templates
 
 from src.web.blog import router as blog_router
 from src.web.wip import router as wip_router
+from src.web.contact import router as contact_router
 
 app = FastAPI()
 
@@ -27,6 +28,7 @@ app.mount(
 
 app.include_router(blog_router)
 app.include_router(wip_router)
+app.include_router(contact_router)
 
 
 def get_cosie_age() -> str:

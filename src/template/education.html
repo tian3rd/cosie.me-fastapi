@@ -1,0 +1,14 @@
+<section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
+  <h2 class="text-xl font-bold" id="education-section">Education</h2>
+  <div class="flex flex-col gap-y-3 print:gap-y-1" aria-labelledby="education-section">
+    {% for edu in education %}
+    <div class="flex flex-col gap-y-1">
+      <div class="flex justify-between">
+        <div class="font-bold">{{ edu.school }}</div>
+        <div class="text-sm">{{ edu.dates }}</div>
+      </div>
+      <div class="text-sm">{{ edu.degree }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

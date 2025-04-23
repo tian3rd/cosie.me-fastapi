@@ -1,0 +1,19 @@
+<section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
+  <h2 class="text-xl font-bold" id="experience-section">Work Experience</h2>
+  <div class="flex flex-col gap-y-3 print:gap-y-1" aria-labelledby="experience-section">
+    {% for experience in work_experience %}
+    <div class="flex flex-col gap-y-1">
+      <div class="flex justify-between">
+        <div class="font-bold">{{ experience.title }}</div>
+        <div class="text-sm">{{ experience.dates }}</div>
+      </div>
+      <div class="text-sm">{{ experience.company }}</div>
+      <div class="text-pretty font-mono text-sm text-design-resume">
+        {% for exp in experience.description.split('\n') %}
+        <p class="text-xs text-pretty font-mono leading-tight mb-1">{{ exp }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
