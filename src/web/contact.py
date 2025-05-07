@@ -20,9 +20,9 @@ async def contact(request: Request):
             "location": "Fyshwick, ACT",
             "dates": "Feb 2023 - Present",
             "description": dedent(
-                """Customized scripts and pipelines to generate and visualize ASPICE reports.
-                   Implemented automation of in-house tools to synchronize data between softwares.
-                   Optimized cross-department cloud storage cost by 40% with AWS S3 services."""
+                """Customized scripts and pipelines to generate and visualize daily ASPICE reports.
+                   Implemented automation of in-house tools to shorten data synchronization time from days to hours.
+                   Optimized cross-department cloud storage cost by 40% with multiple AWS services."""
             ),
         },
         {
@@ -32,7 +32,7 @@ async def contact(request: Request):
             "dates": "Jun 2022 - Feb 2023",
             "description": dedent(
                 """Developed an open source cross-platform package rdflib in Dart.
-                   Implemented design documents and integrated peripherals with Adafruit Feather board."""
+                   Implemented real-time data streaming with microcontrollers to achieve millisecond latency."""
             ),
         },
         {
@@ -41,8 +41,8 @@ async def contact(request: Request):
             "location": "Acton, ACT",
             "dates": "Feb 2022 - Feb 2023",
             "description": dedent(
-                """Developed different software interfaces for mechanical equipment in the lab.
-                   Assisted researchers with data analysis and visualization."""
+                """Developed user-friendly software interfaces for legacy mechanical equipment in the lab.
+                   Assisted researchers with data analysis and visualization using Python."""
             ),
         },
     ]
@@ -57,26 +57,29 @@ async def contact(request: Request):
 
     skills = [
         "Python",
-        "SQL",
+        "JavaScript",
+        "TypeScript",
         "Dart",
         "Java",
-        "AWS (S3, EC2, Batch, Lambda)",
+        "React",
+        "Next.js",
+        "FastAPI",
+        "SQL",
+        "DuckDB",
+        "GraphQL",
         "Jenkins",
-        "GitHub Actions",
         "Docker",
         "Ansible",
-        "JavaScript",
-        "React",
-        "FastAPI",
         "tailwindcss",
-        "DuckDB",
+        "AWS (S3, EC2, Batch, Lambda, Athena)",
+        "GitHub (Actions, Administration)",
     ]
 
     return templates.TemplateResponse(
         "contact.html",
         {
             "request": request,
-            "name": "Tian Wu",
+            "name": "Tian (Phillip) Wu",
             "headline": headline,
             "location": "Canberra, Australia",
             "profile_img": "/static/images/profile.webp",
